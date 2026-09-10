@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KriptoTahmin — Kripto Fiyat Tahmin Oyunu</title>
+    <meta name="description"
+        content="Gerçek zamanlı kripto fiyatlarıyla tahmin oyunu. Yukarı mı, aşağı mı? Tahmin et, puan kazan!">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- ============ BAĞLANTI DURUMU ============ -->
+        <div class="connection-status" id="connectionStatus">
+            <span class="status-dot"></span>
+            <span class="status-text">Bağlanıyor...</span>
+        </div>
+
+        <!-- ============ HEADER ============ -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">📊</span>
+                <h1>Kripto<span class="logo-accent">Tahmin</span></h1>
+            </div>
+            <div class="score-panel">
+                <div class="score-item">
+                    <span class="score-label">Skor</span>
+                    <span class="score-value" id="score">0</span>
+                </div>
+                <div class="score-item streak-item">
+                    <span class="score-label">Seri</span>
+                    <span class="score-value" id="streak"><span id="streakCount">0</span> <span
+                            id="streakFire">🔥</span></span>
+                </div>
+                <div class="score-item">
+                    <span class="score-label">Rekor</span>
+                    <span class="score-value" id="highScore">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- ============ COIN SEÇİCİ ============ -->
+        <div class="coin-selector" id="coinSelector">
+            <!-- JS tarafından render edilecek -->
+        </div>
+
+        <!-- ============ ANA OYUN ALANI ============ -->
+        <main class="game-area">
+
+            <!-- Fiyat Gösterimi -->
+            <div class="price-card">
+                <div class="coin-header">
+                    <span class="coin-icon" id="coinIcon">₿</span>
+                    <div class="coin-meta">
+                        <span class="coin-name" id="coinName">Bitcoin</span>
+                        <span class="coin-symbol" id="coinSymbol">BTC/USDT</span>
+                    </div>
+                    <div class="price-change-badge" id="priceChangeBadge">
+                        <span id="priceChangeArrow">▲</span>
+                        <span id="priceChangePercent">0.00%</span>
+                    </div>
+                </div>
+
+                <div class="price-display">
+                    <span class="price-dollar">$</span>
+                    <span class="price-value" id="currentPrice">---,--</span>
+                </div>
+
+                <!-- Mini Grafik -->
+                <div class="chart-container">
+                    <canvas id="priceChart"></canvas>
+                </div>
+            </div>
+
+            <!-- ============ OYUN KONTROL ALANI ============ -->
+            <div class="game-controls">
+
+                <!-- Durum: TAHMİN BEKLENİYOR -->
+                <div class="prediction-buttons" id="predictionButtons">
+                    <p class="prediction-prompt">Fiyat 10 saniye sonra ne olacak?</p>
+                    <div class="buttons-row">
+                        <button class="btn btn-up" id="btnUp">
+                            <span class="btn-arrow">▲</span>
+                            <span class="btn-label">YUKARI</span>
+                        </button>
+                        <button class="btn btn-down" id="btnDown">
+                            <span class="btn-arrow">▼</span>
+                            <span class="btn-label">AŞAĞI</span>
+                        </button>
+                    </div>
+                    <p class="multiplier-hint" id="multiplierHint"></p>
+                </div>
+
+                <!-- Durum: GERİ SAYIM -->
+                <div class="countdown-panel" id="countdownPanel" style="display:none;">
+                    <div class="prediction-info">
+                        <span class="prediction-direction" id="predictionDirection">▲ YUKARI</span>
+                        <span class="prediction-at">tahmini @ <strong id="predictionPriceDisplay">$0</strong></span>
+                    </div>
+                    <div class="countdown-ring-wrapper">
+                        <svg class="countdown-svg" viewBox="0 0 120 120">
+                            <circle class="ring-bg" cx="60" cy="60" r="52" />
+                            <circle class="ring-progress" id="countdownRing" cx="60" cy="60" r="52" />
+                        </svg>
+                        <div class="countdown-number" id="countdownNumber">30</div>
+                    </div>
+                    <p class="countdown-sub">saniye kaldı</p>
+                    <div class="live-diff" id="liveDiff">
+                        <span id="liveDiffValue">$0.00</span>
+                    </div>
+                </div>
+
+                <!-- Durum: SONUÇ -->
+                <div class="result-panel" id="resultPanel" style="display:none;">
+                    <div class="result-icon" id="resultIcon">✅</div>
+                    <div class="result-title" id="resultTitle">Doğru Tahmin!</div>
+                    <div class="result-detail" id="resultDetail">
+                        <span id="resultPriceChange"></span>
+                    </div>
+                    <div class="result-score" id="resultScore">+10 puan</div>
+                    <div class="streak-message" id="streakMessage"></div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- ============ İSTATİSTİKLER ============ -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-num" id="totalPredictions">0</span>
+                <span class="stat-label">Toplam</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num" id="correctPredictions">0</span>
+                <span class="stat-label">Doğru</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num" id="accuracy">%0</span>
+                <span class="stat-label">Başarı</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num" id="bestStreak">0</span>
+                <span class="stat-label">En İyi Seri</span>
+            </div>
+        </div>
+
+        <!-- ============ FOOTER ============ -->
+        <footer class="footer">
+            <p class="disclaimer">Veriler Binance API'den alınmaktadır. Bu bir oyundur, yatırım tavsiyesi değildir.</p>
+            <button class="share-btn" id="shareBtn">
+                <span>📤</span> Sonucu Paylaş
+            </button>
+        </footer>
+
+    </div>
+
+    <!-- Skor animasyonu için toast container -->
+    <div id="toastContainer"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
