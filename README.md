@@ -4,6 +4,10 @@
 
 Canlı kripto fiyatlarıyla oynanan küçük bir fiyat tahmin oyunu.
 
+## Canlı Demo
+
+Oyunu buradan deneyebilirsin: [https://berat1834.github.io/kripto-tahmin/](https://berat1834.github.io/kripto-tahmin/)
+
 Bu projeyi, kripto verisiyle çalışan daha büyük bir raporlama aracına başlamadan önce küçük bir hafta sonu prototipi olarak yaptım. Binance WebSocket üzerinden BTC, ETH, BNB, SOL ve AVAX fiyatlarını canlı takip ediyor; oyuncu fiyatın kısa süre sonra yukarı mı aşağı mı gideceğini tahmin ediyor.
 
 ## Özellikler
