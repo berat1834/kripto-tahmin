@@ -667,7 +667,7 @@ function showCountdown(direction, price) {
         dom.predictionDirection.textContent = '▲ YUKARI';
         dom.predictionDirection.className = 'prediction-direction dir-up';
     } else {
-        dom.predictionDirection.textContent = '▼ AŞAĞI';
+        dom.predictionDirection.textContent = '▼ ASAGI';
         dom.predictionDirection.className = 'prediction-direction dir-down';
     }
 
