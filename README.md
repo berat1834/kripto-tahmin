@@ -1,6 +1,6 @@
 # KriptoTahmin
 
-<img src="assets/screenshot.png" alt="KriptoTahmin oyun ekranı" width="420">
+<img src="assets/screenshot2.png" alt="KriptoTahmin oyun ekranı" width="420">
 
 Canlı kripto fiyatlarıyla oynanan küçük bir fiyat tahmin oyunu.
 
