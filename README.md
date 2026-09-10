@@ -1,34 +1,34 @@
 # KriptoTahmin
 
-Canli kripto fiyatlariyla oynanan kucuk bir fiyat tahmin oyunu.
+Canlı kripto fiyatlarıyla oynanan küçük bir fiyat tahmin oyunu.
 
-Bu proje, kripto verisiyle calisan daha buyuk bir raporlama aracina baslamadan once hazirlanmis bir hafta sonu prototipidir. Binance WebSocket uzerinden BTC, ETH, BNB, SOL ve AVAX fiyatlarini canli takip eder; oyuncu fiyatin kisa sure sonra yukari mi asagi mi gidecegini tahmin eder.
+Bu projeyi, kripto verisiyle çalışan daha büyük bir raporlama aracına başlamadan önce küçük bir hafta sonu prototipi olarak yaptım. Binance WebSocket üzerinden BTC, ETH, BNB, SOL ve AVAX fiyatlarını canlı takip ediyor; oyuncu fiyatın kısa süre sonra yukarı mı aşağı mı gideceğini tahmin ediyor.
 
-## Ozellikler
+## Özellikler
 
-- Canli Binance WebSocket fiyat akisi
-- BTC, ETH, BNB, SOL ve AVAX destegi
-- Yukari/asagi tahmin mekanigi
-- Skor, seri, rekor ve basari orani
-- Canvas tabanli mini fiyat grafigi
-- LocalStorage ile istatistik kaydi
+- Canlı Binance WebSocket fiyat akışı
+- BTC, ETH, BNB, SOL ve AVAX desteği
+- Yukarı/aşağı tahmin mekaniği
+- Skor, seri, rekor ve başarı oranı
+- Canvas tabanlı mini fiyat grafiği
+- LocalStorage ile istatistik kaydı
 - Mobil uyumlu koyu tema
 
-## Calistirma
+## Çalıştırma
 
-Projeyi herhangi bir statik dosya sunucusuyla calistirabilirsin.
+Projeyi herhangi bir statik dosya sunucusuyla çalıştırabilirsin.
 
 ```bash
 npx serve .
 ```
 
-Ardindan tarayicida ac:
+Ardından tarayıcıda aç:
 
 ```text
 http://localhost:3000
 ```
 
-Alternatif olarak `index.html` dosyasini dogrudan tarayicida da acabilirsin.
+Alternatif olarak `index.html` dosyasını doğrudan tarayıcıda da açabilirsin.
 
 ## Teknolojiler
 
@@ -40,4 +40,4 @@ Alternatif olarak `index.html` dosyasini dogrudan tarayicida da acabilirsin.
 
 ## Not
 
-Bu proje egitim ve portfoy amaciyla yapilmis bir oyundur. Yatirim tavsiyesi, al-sat sinyali veya finansal karar araci degildir.
+Bu proje eğitim ve portföy amacıyla yaptığım bir oyundur. Yatırım tavsiyesi, al-sat sinyali veya finansal karar aracı değildir.
